@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <unistd.h>
+
+#define COUNT 3
+
+int main(void) {
+    # Desired and actual count.
+
+    int count = COUNT, student = 0;
+
+    
+    pid_t retpid = 1;
+
+    
+
+    while (count-- > 0 && retpid > 0)
+        
+
+        if ((retpid = fork()) > 0)
+            student++;
+
+    
+
+    if (retpid != 0) {
+        printf("teacher %d spawned %d/%d student\n",
+            getpid(), student, COUNT);
+
+        
+        while (student-- > 0)
+            wait(NULL);
+    } else {
+       
+
+        printf("student %d, sired by %d\n", getpid(), getppid());
+    }
+
+    return 0;
+}
